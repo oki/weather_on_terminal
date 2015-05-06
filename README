@@ -1,0 +1,11 @@
+Crontab install:
+
+*/10 * * * * /bin/bash -c 'export PATH="$HOME/.rbenv/bin:$PATH" ; eval "$(rbenv init -)"; cd $HOME/dev/ruby/weather_on_terminal; ruby show_my_weather.rb > $HOME/.oh-my-zsh/weather-icon'
+
+WEATHER_ICON_FILE=~/.oh-my-zsh/weather-icon
+function weathert_icon () {
+  cat $WEATHER_ICON_FILE
+}
+
+# prompt
+PROMPT='(%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}@%{$fg[green]%}%30<...<%~%<<%)$(git_prompt_info)%(!.#.$(weathert_icon)%{$reset_color%} ) '
