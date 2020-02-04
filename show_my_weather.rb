@@ -13,6 +13,7 @@ ForecastIO.api_key = ENV.fetch('FORECAST_KEY')
 ForecastIO.default_params = { units: 'si' }
 
 # http://unicode-table.com/en/blocks/miscellaneous-symbols-and-pictographs/
+# http://apps.timwhitlock.info/emoji/tables/unicode
 
 begin
   # geo_data = JSON.load(open('http://freegeoip.net/json/'))
@@ -20,6 +21,8 @@ begin
   # pp geo_data
 
   forecast = ForecastIO.forecast(geo_data["lat"], geo_data["lon"], time: Time.now.to_i)
+
+  # pp forecast
 
   icon = forecast.currently["icon"] rescue '☹'
 
